@@ -39,7 +39,7 @@
     color-scheme: light;
   }
   @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
+    :root[data-theme="dark"]{
       color-scheme: dark;
       --brand: #FF5B37;
       --brand-deep: #E3401D;
@@ -339,25 +339,26 @@
     width:100%; max-width:300px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:6px;
   }
   .lock-brand{
-    width:56px; height:56px; border-radius:14px; background:#1c1c1c; display:flex; align-items:center; justify-content:center;
-    margin-bottom:6px;
+    width:56px; height:56px; border-radius:14px; background: var(--surface-card); border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center; margin-bottom:6px; box-shadow: var(--shadow-sm);
   }
-  .lock-brand span{ font-family: var(--font-display); color:#FF5B37; font-size:34px; font-style:italic; transform: skewX(-12deg); }
-  .lock-box h2{ font-family: var(--font-display); color:#F5F4F1; font-size:24px; margin:0; letter-spacing:.02em; }
-  .lock-sub{ color:#B8B6B0; font-size:13px; margin-bottom:10px; }
-  .lock-sub.error{ color:#FF6B5B; }
+  .lock-brand span{ font-family: var(--font-display); color: var(--brand); font-size:34px; font-style:italic; transform: skewX(-12deg); }
+  .lock-box h2{ font-family: var(--font-display); color: var(--text-primary); font-size:24px; margin:0; letter-spacing:.02em; }
+  .lock-sub{ color: var(--text-secondary); font-size:13px; margin-bottom:10px; }
+  .lock-sub.error{ color: var(--danger); }
   .pin-dots{ display:flex; gap:10px; margin-bottom:22px; height:14px; }
-  .pin-dots span{ width:12px; height:12px; border-radius:50%; border:1.5px solid #565650; }
-  .pin-dots span.filled{ background:#FF5B37; border-color:#FF5B37; }
+  .pin-dots span{ width:12px; height:12px; border-radius:50%; border:1.5px solid var(--border-strong); }
+  .pin-dots span.filled{ background: var(--brand); border-color: var(--brand); }
   .pin-dots.shake{ animation: pinshake .35s; }
   @keyframes pinshake{ 0%,100%{transform:translateX(0);} 25%{transform:translateX(-8px);} 75%{transform:translateX(8px);} }
   .pin-pad{ display:grid; grid-template-columns: repeat(3, 64px); gap:14px; }
   .pin-key{
-    width:64px; height:64px; border-radius:50%; border:1px solid #33332f; background:#1a1a1a; color:#F5F4F1;
+    width:64px; height:64px; border-radius:50%; border:1px solid var(--border); background: var(--surface-card); color: var(--text-primary);
     font-family: var(--font-mono); font-size:22px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    box-shadow: var(--shadow-sm);
   }
-  .pin-key:active{ background:#262622; }
-  .pin-key.ghost{ background:transparent; border:none; color:#79857E; font-size:14px; }
+  .pin-key:active{ background: var(--surface-sunken); }
+  .pin-key.ghost{ background:transparent; border:none; color: var(--text-muted); font-size:14px; box-shadow:none; }
 
   .toast{
     position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
@@ -411,7 +412,7 @@
   <main id="main"></main>
 </div>
 
-<div class="modal-overlay" id="lockScreen" style="z-index:200; background:#101010;">
+<div class="modal-overlay" id="lockScreen" style="z-index:200; background: var(--surface);">
   <div class="lock-box">
     <div class="lock-brand"><span>/</span></div>
     <h2>FIVE SLASH</h2>
